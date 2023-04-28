@@ -22,5 +22,6 @@ public class Main {
             gameConfigurator.chooseGameMode();
         }
 
+
     }//end of main
 }

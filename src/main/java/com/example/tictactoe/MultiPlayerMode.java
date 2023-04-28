@@ -11,15 +11,15 @@ public class MultiPlayerMode implements PlayerMode {
     // true==player1
     // false==player2
     private boolean player;
-
     private String winner;
     private int rows;
     private int columns;
     static char[][] XOArray;
     private int minValueInArray;
     private int maxValueInArray;
-    private boolean flag=true;
-    private int count=0;
+    private boolean flag = true;
+    private boolean shutApp = false;
+    private int count = 0;
 
     View view = new View();
 
@@ -35,11 +35,6 @@ public class MultiPlayerMode implements PlayerMode {
     }
 
     @Override
-    public int getRows() {
-        return rows;
-    }
-
-    @Override
     public int getColumns() {
         return columns;
     }
@@ -49,6 +44,7 @@ public class MultiPlayerMode implements PlayerMode {
         return XOArray;
     }
 
+    @Override
     public void checkPattern() {
         if (rows == 3 && columns == 3) {
             minValueInArray = 1;
@@ -57,7 +53,6 @@ public class MultiPlayerMode implements PlayerMode {
             minValueInArray = 1;
             maxValueInArray = 25;
         }
-
     }
 
     @Override
@@ -141,21 +136,21 @@ public class MultiPlayerMode implements PlayerMode {
                     changePlayer();
                     break;
                 }
-            default:
-               play();
         }
     }
 
     @Override
-    public void play() throws PositionAlreadyTakenException {
+    public void play() {
         while (flag) {
             try {
-                setCoordinates(chooseCoordinates());
+                chooseCoordinates();
             } catch (Exception ex) {
-                System.out.println("Position already taken! Try another one");
+                System.out.println("Please enter an Integer value");
+                continue;
             }
             if (checkWinner()) {
                 flag = false;
+                shutApp = true;
                 view.presentWinner(winner);
                 view.presentArray(this.XOArray);
                 // return;
@@ -165,20 +160,35 @@ public class MultiPlayerMode implements PlayerMode {
         }
     }
 
+
     @Override
-    public int chooseCoordinates()  {
-        int number = 0;
-        System.out.println("choose a number");
-        try {
-            number = scanner.nextInt();
-            if (number < minValueInArray || number > maxValueInArray) {
-                throw new Exception();
+    public void chooseCoordinates() {
+
+        while (true) {
+
+            int number;
+            System.out.println("choose a number");
+
+            try {
+                number = scanner.nextInt();
+
+                if ((number < minValueInArray) || (number > maxValueInArray)) {
+                    System.out.println("choose value from " + minValueInArray + " to " + maxValueInArray + "\n");
+                    continue;
+                }
+            } catch (Exception e) {
+                System.err.println("choose correct Integer value" + "\n");
+                scanner.next();
+                continue;
+            }
+            try {
+                setCoordinates(number);
+                break;
+            } catch (PositionAlreadyTakenException e) {
+                System.err.println("Position already taken! Try another one" + "\n");
+                continue;
             }
         }
-        catch (Exception e) {
-            System.out.println("choose correct Integer value");
-        }
-        return number;
     }
 
     public void changePlayer() {
@@ -187,8 +197,8 @@ public class MultiPlayerMode implements PlayerMode {
     }
 
     public boolean checkWinner() {
-        if(count==maxValueInArray){
-            winner="draw";
+        if (count == maxValueInArray) {
+            winner = "draw";
             return true;
         } else if ((XOArray[0][0] == 'O' && XOArray[0][1] == 'O' && XOArray[0][2] == 'O') ||
                 (XOArray[1][0] == 'O' && XOArray[1][1] == 'O' && XOArray[1][2] == 'O') ||

@@ -19,19 +19,21 @@ public class SinglePlayerMode implements PlayerMode {
     }
 
     @Override
+    public void checkPattern() {
+
+    }
+
+    @Override
     public void play() {
 
     }
 
     @Override
-    public int chooseCoordinates() {
-        return 0;
+    public void chooseCoordinates() {
+
     }
 
-    @Override
-    public int getRows() {
-        return 0;
-    }
+
 
     @Override
     public int getColumns() {
