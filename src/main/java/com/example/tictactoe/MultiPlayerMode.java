@@ -204,6 +204,7 @@ public class MultiPlayerMode implements PlayerMode {
                 (XOArray[0][0] == 'O' && XOArray[1][0] == 'O' && XOArray[2][0] == 'O') ||
                 (XOArray[0][1] == 'O' && XOArray[1][1] == 'O' && XOArray[2][1] == 'O') ||
                 (XOArray[0][2] == 'O' && XOArray[1][2] == 'O' && XOArray[2][2] == 'O') ||
+                (XOArray[1][0] == 'O' && XOArray[1][1] == 'O' && XOArray[1][2] == 'O') ||
                 (XOArray[0][0] == 'O' && XOArray[1][1] == 'O' && XOArray[2][2] == 'O') ||
                 (XOArray[2][0] == 'O' && XOArray[1][1] == 'O' && XOArray[0][2] == 'O')) {
             winner = "Player 2";
@@ -214,8 +215,9 @@ public class MultiPlayerMode implements PlayerMode {
                 (XOArray[0][0] == 'X' && XOArray[1][0] == 'X' && XOArray[2][0] == 'X') ||
                 (XOArray[0][1] == 'X' && XOArray[1][1] == 'X' && XOArray[2][1] == 'X') ||
                 (XOArray[0][2] == 'X' && XOArray[1][2] == 'X' && XOArray[2][2] == 'X') ||
+                (XOArray[1][0] == 'X' && XOArray[1][1] == 'X' && XOArray[1][2] == 'X') ||
                 (XOArray[0][0] == 'X' && XOArray[1][1] == 'X' && XOArray[2][2] == 'X') ||
-                (XOArray[2][0] == 'X' && XOArray[1][1] == 'O' && XOArray[0][2] == 'X')
+                (XOArray[2][0] == 'X' && XOArray[1][1] == 'X' && XOArray[0][2] == 'X')
 
         ) {
             winner = "Player 1";
