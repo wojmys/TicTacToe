@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class SinglePlayerMode extends PlayerMode {
 
+
+
     Random random = new Random();
 
     public SinglePlayerMode() {
@@ -14,8 +16,11 @@ public class SinglePlayerMode extends PlayerMode {
         this.rows=rows;
         this.columns=columns;
         checkPattern();
+        computerAsPlayer2=true;
         XOArray = new char[rows][columns];
     }
+
+
 
     @Override
     public void chooseCoordinates() {
@@ -23,7 +28,7 @@ public class SinglePlayerMode extends PlayerMode {
             int number;
 
             if (!player) {
-                System.out.println(getPlayer()+" : please choose a number");
+                System.out.println("\n"+getPlayer()+" : please choose a number");
                 try {
                     number = scanner.nextInt();
 

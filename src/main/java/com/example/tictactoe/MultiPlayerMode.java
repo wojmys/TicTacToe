@@ -18,7 +18,7 @@ public class MultiPlayerMode extends PlayerMode {
 
         while (true) {
             int number;
-            System.out.println(getPlayer()+" : please choose a number");
+            System.out.println("\n"+getPlayer()+" : please choose a number");
 
             try {
                 number = scanner.nextInt();
@@ -28,7 +28,7 @@ public class MultiPlayerMode extends PlayerMode {
                     continue;
                 }
             } catch (Exception e) {
-                System.err.println("choose correct Integer value" + "\n");
+                System.err.println("choose value from " + minValueInArray + " to " + maxValueInArray + "\n");
                 scanner.next();
                 continue;
             }

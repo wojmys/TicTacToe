@@ -13,15 +13,16 @@ public abstract class PlayerMode {
     //only for singlePlayer
     boolean dontPrint;
 
-    private String winner;
     int rows;
     int columns;
     static char[][] XOArray;
     int minValueInArray;
     int maxValueInArray;
-    private boolean flag = true;
+    boolean computerAsPlayer2;
+    boolean flag = true;
     private boolean shutApp = false;
     private int count = 0;
+    private String winner;
 
     View view = new View();
 
@@ -30,7 +31,7 @@ public abstract class PlayerMode {
             try {
                 chooseCoordinates();
             } catch (Exception ex) {
-                System.out.println("Please enter an Integer value");
+                System.out.println("choose value from " + minValueInArray + " to " + maxValueInArray + "\n");
                 continue;
             }
             if (checkWinner()) {
@@ -40,11 +41,15 @@ public abstract class PlayerMode {
                 view.presentArray(this.XOArray);
             } else if (dontPrint) {
                 continue;
-            } else {
+            } else if(!player && computerAsPlayer2) {
+                System.out.println("------------------"+"\n"+
+                        "Computer's choice: "+"\n");
+                view.presentArray(this.XOArray);
+            }else {
                 view.presentArray(this.XOArray);
             }
-            }
         }
+    }
 
     public int getColumns() {
         return columns;
@@ -54,10 +59,10 @@ public abstract class PlayerMode {
         return XOArray;
     }
 
-    public String getPlayer(){
-        if(!player){
+    public String getPlayer() {
+        if (!player) {
             return "Player 1";
-        }else {
+        } else {
             return "Player 2";
         }
     }
@@ -66,13 +71,14 @@ public abstract class PlayerMode {
         if (rows == 3 && columns == 3) {
             minValueInArray = 1;
             maxValueInArray = 9;
-        } else if (rows == 5 && columns == 5){
+        } else if (rows == 5 && columns == 5) {
             minValueInArray = 1;
-            maxValueInArray = 25;
-        }else{
+            maxValueInArray = 100;
+        } else {
             return;
         }
     }
+
     public void setCoordinates(int number) throws PositionAlreadyTakenException {
         char mark;
         if (!player) {
@@ -87,7 +93,7 @@ public abstract class PlayerMode {
                 } else {
                     XOArray[0][0] = mark;
                     changePlayer();
-                    dontPrint=false;
+                    dontPrint = false;
                     break;
                 }
 
@@ -97,7 +103,7 @@ public abstract class PlayerMode {
                 } else {
                     XOArray[0][1] = mark;
                     changePlayer();
-                    dontPrint=false;
+                    dontPrint = false;
                     break;
                 }
             case 3:
@@ -106,7 +112,7 @@ public abstract class PlayerMode {
                 } else {
                     XOArray[0][2] = mark;
                     changePlayer();
-                    dontPrint=false;
+                    dontPrint = false;
                     break;
                 }
             case 4:
@@ -115,7 +121,7 @@ public abstract class PlayerMode {
                 } else {
                     XOArray[1][0] = mark;
                     changePlayer();
-                    dontPrint=false;
+                    dontPrint = false;
                     break;
                 }
             case 5:
@@ -124,7 +130,7 @@ public abstract class PlayerMode {
                 } else {
                     XOArray[1][1] = mark;
                     changePlayer();
-                    dontPrint=false;
+                    dontPrint = false;
                     break;
                 }
             case 6:
@@ -133,7 +139,7 @@ public abstract class PlayerMode {
                 } else {
                     XOArray[1][2] = mark;
                     changePlayer();
-                    dontPrint=false;
+                    dontPrint = false;
                     break;
                 }
             case 7:
@@ -142,7 +148,7 @@ public abstract class PlayerMode {
                 } else {
                     XOArray[2][0] = mark;
                     changePlayer();
-                    dontPrint=false;
+                    dontPrint = false;
                     break;
                 }
             case 8:
@@ -151,7 +157,7 @@ public abstract class PlayerMode {
                 } else {
                     XOArray[2][1] = mark;
                     changePlayer();
-                    dontPrint=false;
+                    dontPrint = false;
                     break;
                 }
             case 9:
@@ -160,7 +166,7 @@ public abstract class PlayerMode {
                 } else {
                     XOArray[2][2] = mark;
                     changePlayer();
-                    dontPrint=false;
+                    dontPrint = false;
                     break;
                 }
         }

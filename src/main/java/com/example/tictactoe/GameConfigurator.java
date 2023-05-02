@@ -20,7 +20,7 @@ public class GameConfigurator {
         System.out.println("Please choose game pattern:");
 
         System.out.println("Press 1 for 3x3 pattern");
-        System.out.println("Press 2 for 5x5 pattern");
+        System.out.println("Press 2 for 10x10 pattern");
         try {
             chosenNumberGamePattern = scanner.nextInt();
 
@@ -29,8 +29,8 @@ public class GameConfigurator {
                 this.columns = 3;
                 array = new char[rows][columns];
             } else if (chosenNumberGamePattern == 2) {
-                this.rows = 5;
-                this.columns = 5;
+                this.rows = 10;
+                this.columns = 10;
                 array = new char[rows][columns];
             } else {
                 throw new Exception("choose correct game pattern");
