@@ -25,12 +25,12 @@ public class GameConfigurator {
             chosenNumberGamePattern = scanner.nextInt();
 
             if (chosenNumberGamePattern == 1) {
-                rows = 3;
-                columns = 3;
+                this.rows = 3;
+                this.columns = 3;
                 array = new char[rows][columns];
             } else if (chosenNumberGamePattern == 2) {
-                rows = 5;
-                columns = 5;
+                this.rows = 5;
+                this.columns = 5;
                 array = new char[rows][columns];
             } else {
                 throw new Exception("choose correct game pattern");

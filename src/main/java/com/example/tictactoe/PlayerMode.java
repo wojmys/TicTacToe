@@ -25,6 +25,26 @@ public abstract class PlayerMode {
 
     View view = new View();
 
+    public void play() {
+        while (flag) {
+            try {
+                chooseCoordinates();
+            } catch (Exception ex) {
+                System.out.println("Please enter an Integer value");
+                continue;
+            }
+            if (checkWinner()) {
+                flag = false;
+                shutApp = true;
+                view.presentWinner(winner);
+                view.presentArray(this.XOArray);
+            } else if (dontPrint) {
+                continue;
+            } else {
+                view.presentArray(this.XOArray);
+            }
+            }
+        }
 
     public int getColumns() {
         return columns;
@@ -46,9 +66,11 @@ public abstract class PlayerMode {
         if (rows == 3 && columns == 3) {
             minValueInArray = 1;
             maxValueInArray = 9;
-        } else {
+        } else if (rows == 5 && columns == 5){
             minValueInArray = 1;
             maxValueInArray = 25;
+        }else{
+            return;
         }
     }
     public void setCoordinates(int number) throws PositionAlreadyTakenException {
@@ -141,29 +163,6 @@ public abstract class PlayerMode {
                     dontPrint=false;
                     break;
                 }
-        }
-    }
-
-    public void play() {
-        while (flag) {
-            try {
-                chooseCoordinates();
-            } catch (Exception ex) {
-                System.out.println("Please enter an Integer value");
-                continue;
-            }
-            if (checkWinner()) {
-                flag = false;
-                shutApp = true;
-                view.presentWinner(winner);
-                view.presentArray(this.XOArray);
-                // return;
-            } else {
-                if(dontPrint){
-                    continue;
-                }else
-                    view.presentArray(this.XOArray);
-            }
         }
     }
 

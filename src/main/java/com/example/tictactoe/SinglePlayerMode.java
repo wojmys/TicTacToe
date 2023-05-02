@@ -11,13 +11,14 @@ public class SinglePlayerMode extends PlayerMode {
 
     public SinglePlayerMode(int rows, int columns) {
         super();
+        this.rows=rows;
+        this.columns=columns;
         checkPattern();
         XOArray = new char[rows][columns];
     }
 
     @Override
     public void chooseCoordinates() {
-
         while (true) {
             int number;
 
@@ -49,7 +50,6 @@ public class SinglePlayerMode extends PlayerMode {
                 } catch (PositionAlreadyTakenException e) {
                     dontPrint=true;
                     break;
-//                    continue;
                 }
             }
         }

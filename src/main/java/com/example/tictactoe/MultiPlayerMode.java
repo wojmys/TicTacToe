@@ -7,6 +7,8 @@ public class MultiPlayerMode extends PlayerMode {
 
     public MultiPlayerMode(int rows, int columns) {
         super();
+        this.rows=rows;
+        this.columns=columns;
         checkPattern();
         XOArray = new char[rows][columns];
     }
