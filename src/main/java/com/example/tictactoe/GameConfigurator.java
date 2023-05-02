@@ -1,6 +1,5 @@
 package com.example.tictactoe;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameConfigurator {
@@ -14,7 +13,6 @@ public class GameConfigurator {
 
     public void initialGreeting() {
         System.out.println("Welcome to Tic Tac Toe game" + "\n");
-
     }
 
     public void chooseGamePattern() {

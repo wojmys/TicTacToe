@@ -13,7 +13,6 @@ public class Main {
         } catch (Exception e) {
             gameConfigurator.chooseGamePattern();
         }
-
         gameConfigurator.showRules();
 
         try {
@@ -21,7 +20,6 @@ public class Main {
         } catch (Exception e) {
             gameConfigurator.chooseGameMode();
         }
-
 
     }//end of main
 }

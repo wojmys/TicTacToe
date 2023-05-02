@@ -1,54 +1,59 @@
 package com.example.tictactoe;
 
-public class SinglePlayerMode implements PlayerMode {
+import java.util.Random;
 
-    private int playerNumber;
+public class SinglePlayerMode extends PlayerMode {
 
-    private int rows;
-    private int columns;
-    private char[][] XOArray;
+    Random random = new Random();
 
     public SinglePlayerMode() {
-
     }
 
     public SinglePlayerMode(int rows, int columns) {
-        this.rows = rows;
-        this.columns = columns;
+        super();
+        checkPattern();
         XOArray = new char[rows][columns];
-    }
-
-    @Override
-    public void checkPattern() {
-
-    }
-
-    @Override
-    public void play() {
-
     }
 
     @Override
     public void chooseCoordinates() {
 
+        while (true) {
+            int number;
+
+            if (!player) {
+                System.out.println(getPlayer()+" : please choose a number");
+                try {
+                    number = scanner.nextInt();
+
+                    if ((number < minValueInArray) || (number > maxValueInArray)) {
+                        System.out.println("choose value from " + minValueInArray + " to " + maxValueInArray + "\n");
+                        continue;
+                    }
+                } catch (Exception e) {
+                    System.err.println("choose correct Integer value" + "\n");
+                    scanner.next();
+                    continue;
+                }
+                try {
+                    setCoordinates(number);
+                    break;
+                } catch (PositionAlreadyTakenException e) {
+                    System.err.println("Position already taken! Try another one" + "\n");
+                }
+            }else{
+                number=random.nextInt(maxValueInArray-minValueInArray+1)+minValueInArray;
+                try {
+                    setCoordinates(number);
+                    break;
+                } catch (PositionAlreadyTakenException e) {
+                    dontPrint=true;
+                    break;
+//                    continue;
+                }
+            }
+        }
+        }
+
     }
 
-
-
-    @Override
-    public int getColumns() {
-        return 0;
-    }
-
-    @Override
-    public char[][] getXOArray() {
-        return new char[0][];
-    }
-
-    @Override
-    public void setCoordinates(int number) {
-
-    }
-
-
-}
