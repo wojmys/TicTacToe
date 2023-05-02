@@ -160,12 +160,10 @@ public class MultiPlayerMode implements PlayerMode {
         }
     }
 
-
     @Override
     public void chooseCoordinates() {
 
         while (true) {
-
             int number;
             System.out.println("choose a number");
 

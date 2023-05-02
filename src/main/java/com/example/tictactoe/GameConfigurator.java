@@ -11,13 +11,6 @@ public class GameConfigurator {
     private int columns;
     private char array[][];
 
-//    public int getChosenNumberGamePattern() {
-//        return chosenNumberGamePattern;
-//    }
-//
-//    public int getChosenNumberGameMode() {
-//        return chosenNumberGameMode;
-//    }
 
     public void initialGreeting() {
         System.out.println("Welcome to Tic Tac Toe game" + "\n");
@@ -72,8 +65,8 @@ public class GameConfigurator {
         }
     }
 
-
     public void showRules() {
+        System.out.println("RULES:"+"\n");
         System.out.println("select the appropriate number to place a mark there" + "\n");
         char count = '0';
 
@@ -96,5 +89,4 @@ public class GameConfigurator {
         }
         System.out.println();
     }
-
 }
