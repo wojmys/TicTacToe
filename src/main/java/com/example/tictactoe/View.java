@@ -2,7 +2,6 @@ package com.example.tictactoe;
 
 public class View {
 
-    private PlayerMode playerMode;
     private int gamePattern;
     private int gameMode;
 
@@ -16,19 +15,19 @@ public class View {
     }
 
     public void presentArray(char[][] array) {
-        if (gameMode == 1) {
-            playerMode = new SinglePlayerMode();
-
-        } else {
-            playerMode = new MultiPlayerMode();
-
-        }
+//        if (pla == 1) {
+//            playerMode = new SinglePlayerMode();
+//
+//        } else {
+//            playerMode = new MultiPlayerMode();
+//
+//        }
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-                if (j == playerMode.getColumns() - 1) {
-                    System.out.print(" | " + playerMode.getXOArray()[i][j] + " | ");
+                if (j == array.length - 1) {
+                    System.out.print(" | " + array[i][j] + " | ");
                 } else
-                    System.out.print(" | " + playerMode.getXOArray()[i][j]);
+                    System.out.print(" | " + array[i][j]);
             }
             System.out.println();
         }

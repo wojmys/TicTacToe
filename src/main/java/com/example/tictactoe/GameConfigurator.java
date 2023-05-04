@@ -1,5 +1,6 @@
 package com.example.tictactoe;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GameConfigurator {
@@ -8,7 +9,7 @@ public class GameConfigurator {
     private int chosenNumberGameMode;
     private int rows;
     private int columns;
-    private char array[][];
+    private int arrayToPresentRules[][];
 
 
     public void initialGreeting() {
@@ -27,11 +28,11 @@ public class GameConfigurator {
             if (chosenNumberGamePattern == 1) {
                 this.rows = 3;
                 this.columns = 3;
-                array = new char[rows][columns];
+                arrayToPresentRules = new int[rows][columns];
             } else if (chosenNumberGamePattern == 2) {
                 this.rows = 10;
                 this.columns = 10;
-                array = new char[rows][columns];
+                arrayToPresentRules = new int[rows][columns];
             } else {
                 throw new Exception("choose correct game pattern");
             }
@@ -66,22 +67,23 @@ public class GameConfigurator {
     public void showRules() {
         System.out.println("RULES:"+"\n");
         System.out.println("select the appropriate number to place a mark there" + "\n");
-        char count = '0';
+        int count = 0;
 
         //initialize 2D Array
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 count++;
-                array[i][j] = count;
+                arrayToPresentRules[i][j] = count;
             }
         }
-        //show 2D Array
+
+       // show 2D Array
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (j == columns - 1) {
-                    System.out.print(" | " + array[i][j] + " | ");
+                    System.out.print(" | " + arrayToPresentRules[i][j] + " | ");
                 } else
-                    System.out.print(" | " + array[i][j]);
+                    System.out.print(" | " + arrayToPresentRules[i][j]);
             }
             System.out.println();
         }

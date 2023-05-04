@@ -15,7 +15,7 @@ public abstract class PlayerMode {
 
     int rows;
     int columns;
-    static char[][] XOArray;
+    char[][] XOArray;
     int minValueInArray;
     int maxValueInArray;
     boolean computerAsPlayer2;
