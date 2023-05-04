@@ -51,13 +51,17 @@ public abstract class PlayerMode {
         }
     }
 
-    public int getColumns() {
-        return columns;
+    public String getWinner() {
+        return winner;
     }
 
-    public char[][] getXOArray() {
-        return XOArray;
-    }
+    //    public int getColumns() {
+//        return columns;
+//    }
+//
+//    public char[][] getXOArray() {
+//        return XOArray;
+//    }
 
     public String getPlayer() {
         if (!player) {
@@ -181,7 +185,7 @@ public abstract class PlayerMode {
 
     public boolean checkWinner() {
         if (count == maxValueInArray) {
-            winner = "draw";
+            this.winner = "Draw";
             return true;
         } else if ((XOArray[0][0] == 'O' && XOArray[0][1] == 'O' && XOArray[0][2] == 'O') ||
                 (XOArray[1][0] == 'O' && XOArray[1][1] == 'O' && XOArray[1][2] == 'O') ||
@@ -191,7 +195,7 @@ public abstract class PlayerMode {
                 (XOArray[0][2] == 'O' && XOArray[1][2] == 'O' && XOArray[2][2] == 'O') ||
                 (XOArray[0][0] == 'O' && XOArray[1][1] == 'O' && XOArray[2][2] == 'O') ||
                 (XOArray[2][0] == 'O' && XOArray[1][1] == 'O' && XOArray[0][2] == 'O')) {
-            winner = "Player 2";
+            this.winner = "Player 2";
             return true;
         } else if ((XOArray[0][0] == 'X' && XOArray[0][1] == 'X' && XOArray[0][2] == 'X') ||
                 (XOArray[1][0] == 'X' && XOArray[1][1] == 'X' && XOArray[1][2] == 'X') ||
