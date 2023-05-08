@@ -2,9 +2,6 @@ package com.example.tictactoe;
 
 public class View {
 
-    private int gamePattern;
-    private int gameMode;
-
 
     public void presentWinner(String playerWinner) {
         if (playerWinner.equals("draw")) {
@@ -15,13 +12,7 @@ public class View {
     }
 
     public void presentArray(char[][] array) {
-//        if (pla == 1) {
-//            playerMode = new SinglePlayerMode();
-//
-//        } else {
-//            playerMode = new MultiPlayerMode();
-//
-//        }
+
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (j == array.length - 1) {

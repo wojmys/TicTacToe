@@ -5,23 +5,23 @@ import org.junit.jupiter.api.function.Executable;
 
 public class TicTacToeTestSuite {
 
-    static int count=0;
+    static int count = 0;
 
     @BeforeEach
     public void before() {
         count++;
-        System.out.println("Test Case: "+count+" begin");
+        System.out.println("Test Case: " + count + " begin");
 
     }
 
     @AfterEach
     public void after() {
-        System.out.println("Test Case: "+count+" end");
+        System.out.println("Test Case: " + count + " end");
     }
 
     @BeforeAll
     public static void beforeAll() {
-        System.out.println("Test Suite: begin"+"\n"+"**********************************************");
+        System.out.println("Test Suite: begin" + "\n" + "**********************************************");
     }
 
     @AfterAll
@@ -31,396 +31,420 @@ public class TicTacToeTestSuite {
 
 
     @Test
-    @DisplayName("TestCase0inRow")
+    @DisplayName("TestCaseWin0inRow")
         //"if the characters are next to each other, player with mark 'O' should win"
 
-    void testCaseOinRow() throws PositionAlreadyTakenException {
+    void TestCaseWin0inRow() throws PositionAlreadyTakenException {
         //Given
 
-        // true==player O
-        // false==player X
-        boolean player;
-        int rows;
-        int columns;
-        char[][] XOArray;
-        int minValueInArray;
-        int maxValueInArray;
-        boolean computerAsPlayer2;
-        boolean flag = true;
-        boolean shutApp = false;
-        int count = 0;
-        String winner;
-
-
         SinglePlayerMode singlePlayerMode = new SinglePlayerMode(3, 3);
-        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3,3);
-//        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10,10);
+        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3, 3);
+        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10, 10);
 
         //When
 
-        //Player '0' chose position 1,2,3.
-        singlePlayerMode.setCoordinates(4); //Player X
-        singlePlayerMode.setCoordinates(1); //Player 0
-        singlePlayerMode.setCoordinates(9); //Player X
-        singlePlayerMode.setCoordinates(2); //Player 0
-        singlePlayerMode.setCoordinates(6); //Player X
-        singlePlayerMode.setCoordinates(3); //Player 0
+        //Player '0' chose position 0.0, 0.1, 0.2.
+        singlePlayerMode.setCoordinates(1, 0); //Player X
+        singlePlayerMode.setCoordinates(0, 0); //Player 0
+        singlePlayerMode.setCoordinates(2, 2); //Player X
+        singlePlayerMode.setCoordinates(0, 1); //Player 0
+        singlePlayerMode.setCoordinates(1, 2); //Player X
+        singlePlayerMode.setCoordinates(0, 2); //Player 0
 
-        //Player '0' chose position 7,8,9.
-        multiPlayerMode.setCoordinates(1); //Player X
-        multiPlayerMode.setCoordinates(7); //Player 0
-        multiPlayerMode.setCoordinates(2); //Player X
-        multiPlayerMode.setCoordinates(8); //Player 0
-        multiPlayerMode.setCoordinates(6); //Player X
-        multiPlayerMode.setCoordinates(9); //Player 0
+        //Player '0' chose position 2.0, 2.1, 2.2
+        multiPlayerMode.setCoordinates(0, 0); //Player X
+        multiPlayerMode.setCoordinates(2, 0); //Player 0
+        multiPlayerMode.setCoordinates(0, 1); //Player X
+        multiPlayerMode.setCoordinates(2, 1); //Player 0
+        multiPlayerMode.setCoordinates(1, 2); //Player X
+        multiPlayerMode.setCoordinates(2, 2); //Player 0
+
+        //PLayer 'O' chose position 5.9, 5.8, 5.7, 5.6, 5.5
+        multiPlayerMode2.setCoordinates(5, 9);
+        multiPlayerMode2.setCoordinates(0, 0);
+        multiPlayerMode2.setCoordinates(5, 8);
+        multiPlayerMode2.setCoordinates(0, 1);
+        multiPlayerMode2.setCoordinates(5, 7);
+        multiPlayerMode2.setCoordinates(0, 2);
+        multiPlayerMode2.setCoordinates(5, 6);
+        multiPlayerMode2.setCoordinates(0, 3);
+        multiPlayerMode2.setCoordinates(5, 5);
 
         singlePlayerMode.checkWinner();
-        String actual=singlePlayerMode.getWinner();
+        String actual = singlePlayerMode.getWinner();
 
         multiPlayerMode.checkWinner();
-        String actual2=multiPlayerMode.getWinner();
+        String actual2 = multiPlayerMode.getWinner();
+
+        multiPlayerMode2.checkWinner();
+        String actual3 = multiPlayerMode2.getPlayer();
 
 
         //Then
-        Assertions.assertEquals("Player 2",actual);
-        Assertions.assertEquals("Player 2",actual2);
+        Assertions.assertEquals("Player 2", actual);
+        Assertions.assertEquals("Player 2", actual2);
+        Assertions.assertEquals("Player 2", actual3);
     }
 
     @Test
-    @DisplayName("TestCase0inColumn")
+    @DisplayName("TestCaseWin0inColumn")
         //"if the characters are next to each other in column, player with mark 'O' should win"
 
-    void testCaseOinColumn() throws PositionAlreadyTakenException {
+    void TestCaseWin0inColumn() throws PositionAlreadyTakenException {
         //Given
 
-        // true==player O
-        // false==player X
-        boolean player;
-        int rows;
-        int columns;
-        char[][] XOArray;
-        int minValueInArray;
-        int maxValueInArray;
-        boolean computerAsPlayer2;
-        boolean flag = true;
-        boolean shutApp = false;
-        int count = 0;
-        String winner;
-
-
         SinglePlayerMode singlePlayerMode = new SinglePlayerMode(3, 3);
-        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3,3);
-//        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10,10);
+        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3, 3);
+        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10, 10);
 
         //When
 
-        //Player '0' chose position 3,6,9.
-        singlePlayerMode.setCoordinates(1); //Player X
-        singlePlayerMode.setCoordinates(3); //Player 0
-        singlePlayerMode.setCoordinates(2); //Player X
-        singlePlayerMode.setCoordinates(6); //Player 0
-        singlePlayerMode.setCoordinates(4); //Player X
-        singlePlayerMode.setCoordinates(9); //Player 0
+        //Player '0' chose position 0.2, 1.2, 2.2
+        singlePlayerMode.setCoordinates(0, 0); //Player X
+        singlePlayerMode.setCoordinates(0, 2); //Player 0
+        singlePlayerMode.setCoordinates(0, 1); //Player X
+        singlePlayerMode.setCoordinates(1, 2); //Player 0
+        singlePlayerMode.setCoordinates(1, 0); //Player X
+        singlePlayerMode.setCoordinates(2, 2); //Player 0
 
-        //Player '0' chose position 2,5,8.
-        multiPlayerMode.setCoordinates(1); //Player X
-        multiPlayerMode.setCoordinates(2); //Player 0
-        multiPlayerMode.setCoordinates(3); //Player X
-        multiPlayerMode.setCoordinates(5); //Player 0
-        multiPlayerMode.setCoordinates(6); //Player X
-        multiPlayerMode.setCoordinates(8); //Player 0
+        //Player '0' chose position 0.1, 1.1, 2.1
+        multiPlayerMode.setCoordinates(0, 0); //Player X
+        multiPlayerMode.setCoordinates(0, 1); //Player 0
+        multiPlayerMode.setCoordinates(0, 2); //Player X
+        multiPlayerMode.setCoordinates(1, 1); //Player 0
+        multiPlayerMode.setCoordinates(1, 2); //Player X
+        multiPlayerMode.setCoordinates(2, 1); //Player 0
+
+        //PLayer 'O' chose position 5.4, 6.4, 7.4, 8.4, 9.4
+        multiPlayerMode2.setCoordinates(5, 4);
+        multiPlayerMode2.setCoordinates(0, 0);
+        multiPlayerMode2.setCoordinates(6, 4);
+        multiPlayerMode2.setCoordinates(0, 1);
+        multiPlayerMode2.setCoordinates(7, 4);
+        multiPlayerMode2.setCoordinates(0, 2);
+        multiPlayerMode2.setCoordinates(8, 4);
+        multiPlayerMode2.setCoordinates(0, 3);
+        multiPlayerMode2.setCoordinates(9, 4);
 
         singlePlayerMode.checkWinner();
-        String actual=singlePlayerMode.getWinner();
+        String actual = singlePlayerMode.getWinner();
 
         multiPlayerMode.checkWinner();
-        String actual2=multiPlayerMode.getWinner();
+        String actual2 = multiPlayerMode.getWinner();
+
+        multiPlayerMode2.checkWinner();
+        String actual3 = multiPlayerMode2.getPlayer();
 
 
         //Then
-        Assertions.assertEquals("Player 2",actual);
-        Assertions.assertEquals("Player 2",actual2);
+        Assertions.assertEquals("Player 2", actual);
+        Assertions.assertEquals("Player 2", actual2);
+        Assertions.assertEquals("Player 2", actual3);
     }
+
     @Test
-    @DisplayName("TestCase0Diagonally")
+    @DisplayName("TestCaseWin0Diagonally")
         //"if the characters are diagonally next to each other , player with mark 'O' should win"
 
-    void testCaseODiagonally() throws PositionAlreadyTakenException {
+    void TestCaseWin0Diagonally() throws PositionAlreadyTakenException {
         //Given
 
-        // true==player O
-        // false==player X
-        boolean player;
-        int rows;
-        int columns;
-        char[][] XOArray;
-        int minValueInArray;
-        int maxValueInArray;
-        boolean computerAsPlayer2;
-        boolean flag = true;
-        boolean shutApp = false;
-        int count = 0;
-        String winner;
-
-
         SinglePlayerMode singlePlayerMode = new SinglePlayerMode(3, 3);
-        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3,3);
-//        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10,10);
+        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3, 3);
+        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10,10);
+        MultiPlayerMode multiPlayerMode3 = new MultiPlayerMode(10,10);
 
         //When
 
-        //Player '0' chose position 1,5,9.
-        singlePlayerMode.setCoordinates(2); //Player X
-        singlePlayerMode.setCoordinates(1); //Player 0
-        singlePlayerMode.setCoordinates(3); //Player X
-        singlePlayerMode.setCoordinates(5); //Player 0
-        singlePlayerMode.setCoordinates(8); //Player X
-        singlePlayerMode.setCoordinates(9); //Player 0
+        //Player '0' chose position 0.0, 1.1, 2.2
+        singlePlayerMode.setCoordinates(0, 1); //Player X
+        singlePlayerMode.setCoordinates(0, 0); //Player 0
+        singlePlayerMode.setCoordinates(0, 2); //Player X
+        singlePlayerMode.setCoordinates(1, 1); //Player 0
+        singlePlayerMode.setCoordinates(2, 1); //Player X
+        singlePlayerMode.setCoordinates(2, 2); //Player 0
 
-        //Player '0' chose position 3,5,7.
-        multiPlayerMode.setCoordinates(1); //Player X
-        multiPlayerMode.setCoordinates(3); //Player 0
-        multiPlayerMode.setCoordinates(2); //Player X
-        multiPlayerMode.setCoordinates(5); //Player 0
-        multiPlayerMode.setCoordinates(6); //Player X
-        multiPlayerMode.setCoordinates(7); //Player 0
+        //Player '0' chose position 0.2, 1.1, 2.0
+        multiPlayerMode.setCoordinates(0, 0); //Player X
+        multiPlayerMode.setCoordinates(0, 2); //Player 0
+        multiPlayerMode.setCoordinates(0, 1); //Player X
+        multiPlayerMode.setCoordinates(1, 1); //Player 0
+        multiPlayerMode.setCoordinates(1, 2); //Player X
+        multiPlayerMode.setCoordinates(2, 0); //Player 0
+
+        //Player 'O' chose position 9.9, 8.8, 7.7, 6.6, 5.5
+        multiPlayerMode2.setCoordinates(0,0);
+        multiPlayerMode2.setCoordinates(9,9);
+        multiPlayerMode2.setCoordinates(0,1);
+        multiPlayerMode2.setCoordinates(8,8);
+        multiPlayerMode2.setCoordinates(0,2);
+        multiPlayerMode2.setCoordinates(7,7);
+        multiPlayerMode2.setCoordinates(0,3);
+        multiPlayerMode2.setCoordinates(6,6);
+        multiPlayerMode2.setCoordinates(7,4);
+        multiPlayerMode2.setCoordinates(5,5);
+
+        //Player 'O' chose position 8.3, 7.4, 6.5, 5.6, 4.7
+        multiPlayerMode3.setCoordinates(0,0);
+        multiPlayerMode3.setCoordinates(8,3);
+        multiPlayerMode3.setCoordinates(0,1);
+        multiPlayerMode3.setCoordinates(7,4);
+        multiPlayerMode3.setCoordinates(0,2);
+        multiPlayerMode3.setCoordinates(6,5);
+        multiPlayerMode3.setCoordinates(0,3);
+        multiPlayerMode3.setCoordinates(5,6);
+        multiPlayerMode3.setCoordinates(7,9);
+        multiPlayerMode3.setCoordinates(4,7);
 
         singlePlayerMode.checkWinner();
-        String actual=singlePlayerMode.getWinner();
+        String actual = singlePlayerMode.getWinner();
 
         multiPlayerMode.checkWinner();
-        String actual2=multiPlayerMode.getWinner();
+        String actual2 = multiPlayerMode.getWinner();
 
+        multiPlayerMode2.checkWinner();
+        String actual3 = multiPlayerMode2.getWinner();
+
+        multiPlayerMode3.checkWinner();
+        String actual4 = multiPlayerMode3.getWinner();
 
         //Then
-        Assertions.assertEquals("Player 2",actual);
-        Assertions.assertEquals("Player 2",actual2);
+        Assertions.assertEquals("Player 2", actual);
+        Assertions.assertEquals("Player 2", actual2);
+        Assertions.assertEquals("Player 2", actual3);
+        Assertions.assertEquals("Player 2", actual4);
+
     }
 
     @Test
-    @DisplayName("TestCaseXinRow")
+    @DisplayName("TestCaseWinXinRow")
         //"if the characters are next to each other, player with mark 'X' should win"
 
-    void testCaseXinRow() throws PositionAlreadyTakenException {
+    void TestCaseWinXinRow() throws PositionAlreadyTakenException {
         //Given
 
-        // true==player O
-        // false==player X
-        boolean player;
-        int rows;
-        int columns;
-        char[][] XOArray;
-        int minValueInArray;
-        int maxValueInArray;
-        boolean computerAsPlayer2;
-        boolean flag = true;
-        boolean shutApp = false;
-        int count = 0;
-        String winner;
-
-
         SinglePlayerMode singlePlayerMode = new SinglePlayerMode(3, 3);
-        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3,3);
-//        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10,10);
+        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3, 3);
+        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10, 10);
 
         //When
 
-        //Player 'X' chose position 1,2,3.
-        singlePlayerMode.setCoordinates(1); //Player X
-        singlePlayerMode.setCoordinates(4); //Player 0
-        singlePlayerMode.setCoordinates(2); //Player X
-        singlePlayerMode.setCoordinates(6); //Player 0
-        singlePlayerMode.setCoordinates(3); //Player X
-        singlePlayerMode.setCoordinates(9); //Player 0
+        //Player 'X' chose position 0.0, 0.1, 0.2
+        singlePlayerMode.setCoordinates(0, 0); //Player X
+        singlePlayerMode.setCoordinates(1, 0); //Player 0
+        singlePlayerMode.setCoordinates(0, 1); //Player X
+        singlePlayerMode.setCoordinates(1, 2); //Player 0
+        singlePlayerMode.setCoordinates(0, 2); //Player X
+        singlePlayerMode.setCoordinates(2, 2); //Player 0
 
-        //Player 'X' chose position 7,8,9.
-        multiPlayerMode.setCoordinates(7); //Player X
-        multiPlayerMode.setCoordinates(6); //Player 0
-        multiPlayerMode.setCoordinates(8); //Player X
-        multiPlayerMode.setCoordinates(3); //Player 0
-        multiPlayerMode.setCoordinates(9); //Player X
-        multiPlayerMode.setCoordinates(2); //Player 0
+        //Player 'X' chose position 2.0, 2.1, 2.2
+        multiPlayerMode.setCoordinates(2, 0); //Player X
+        multiPlayerMode.setCoordinates(1, 2); //Player 0
+        multiPlayerMode.setCoordinates(2, 1); //Player X
+        multiPlayerMode.setCoordinates(0, 2); //Player 0
+        multiPlayerMode.setCoordinates(2, 2); //Player X
+        multiPlayerMode.setCoordinates(1, 1); //Player 0
+
+        //PLayer 'X' chose position 5.4, 6.4, 7.4, 8.4, 9.4
+        multiPlayerMode2.setCoordinates(5, 4);
+        multiPlayerMode2.setCoordinates(0, 1);
+        multiPlayerMode2.setCoordinates(6, 4);
+        multiPlayerMode2.setCoordinates(0, 0);
+        multiPlayerMode2.setCoordinates(7, 4);
+        multiPlayerMode2.setCoordinates(0, 2);
+        multiPlayerMode2.setCoordinates(8, 4);
+        multiPlayerMode2.setCoordinates(0, 9);
+        multiPlayerMode2.setCoordinates(9, 4);
+
 
         singlePlayerMode.checkWinner();
-        String actual=singlePlayerMode.getWinner();
+        String actual = singlePlayerMode.getWinner();
 
         multiPlayerMode.checkWinner();
-        String actual2=multiPlayerMode.getWinner();
+        String actual2 = multiPlayerMode.getWinner();
+
+        multiPlayerMode2.checkWinner();
+        String actual3 = multiPlayerMode2.getWinner();
 
 
         //Then
-        Assertions.assertEquals("Player 1",actual);
-        Assertions.assertEquals("Player 1",actual2);
+        Assertions.assertEquals("Player 1", actual);
+        Assertions.assertEquals("Player 1", actual2);
+        Assertions.assertEquals("Player 1", actual3);
     }
 
     @Test
-    @DisplayName("TestCaseXinColumn")
+    @DisplayName("TestCaseWinXinColumn")
         //"if the characters are next to each other in column, player with mark 'X' should win"
 
-    void testCaseXinColumn() throws PositionAlreadyTakenException {
+    void TestCaseWinXinColumn() throws PositionAlreadyTakenException {
         //Given
 
-        // true==player O
-        // false==player X
-        boolean player;
-        int rows;
-        int columns;
-        char[][] XOArray;
-        int minValueInArray;
-        int maxValueInArray;
-        boolean computerAsPlayer2;
-        boolean flag = true;
-        boolean shutApp = false;
-        int count = 0;
-        String winner;
-
-
         SinglePlayerMode singlePlayerMode = new SinglePlayerMode(3, 3);
-        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3,3);
-//        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10,10);
+        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3, 3);
+        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10, 10);
 
         //When
 
-        //Player 'X' chose position 3,6,9.
-        singlePlayerMode.setCoordinates(3); //Player X
-        singlePlayerMode.setCoordinates(1); //Player 0
-        singlePlayerMode.setCoordinates(6); //Player X
-        singlePlayerMode.setCoordinates(2); //Player 0
-        singlePlayerMode.setCoordinates(9); //Player X
-        singlePlayerMode.setCoordinates(4); //Player 0
+        //Player 'X' chose position 0.2, 1.2, 2.2
+        singlePlayerMode.setCoordinates(0, 2); //Player X
+        singlePlayerMode.setCoordinates(0, 0); //Player 0
+        singlePlayerMode.setCoordinates(1, 2); //Player X
+        singlePlayerMode.setCoordinates(0, 1); //Player 0
+        singlePlayerMode.setCoordinates(2, 2); //Player X
+        singlePlayerMode.setCoordinates(1, 0); //Player 0
 
-        //Player 'X' chose position 2,5,8.
-        multiPlayerMode.setCoordinates(2); //Player X
-        multiPlayerMode.setCoordinates(4); //Player 0
-        multiPlayerMode.setCoordinates(5); //Player X
-        multiPlayerMode.setCoordinates(9); //Player 0
-        multiPlayerMode.setCoordinates(8); //Player X
-        multiPlayerMode.setCoordinates(7); //Player 0
+        //Player 'X' chose position 0.1, 1.1, 2.1
+        multiPlayerMode.setCoordinates(0, 1); //Player X
+        multiPlayerMode.setCoordinates(1, 0); //Player 0
+        multiPlayerMode.setCoordinates(1, 1); //Player X
+        multiPlayerMode.setCoordinates(2, 2); //Player 0
+        multiPlayerMode.setCoordinates(2, 1); //Player X
+        multiPlayerMode.setCoordinates(2, 0); //Player 0
+
+        //Player 'X' chose position 2.7,3.7,4.7,5.7,6,7
+        multiPlayerMode2.setCoordinates(2, 7);
+        multiPlayerMode2.setCoordinates(3, 0);
+        multiPlayerMode2.setCoordinates(3, 7);
+        multiPlayerMode2.setCoordinates(3, 2);
+        multiPlayerMode2.setCoordinates(4, 7);
+        multiPlayerMode2.setCoordinates(3, 8);
+        multiPlayerMode2.setCoordinates(5, 7);
+        multiPlayerMode2.setCoordinates(5, 9);
+        multiPlayerMode2.setCoordinates(6, 7);
 
         singlePlayerMode.checkWinner();
-        String actual=singlePlayerMode.getWinner();
+        String actual = singlePlayerMode.getWinner();
 
         multiPlayerMode.checkWinner();
-        String actual2=multiPlayerMode.getWinner();
+        String actual2 = multiPlayerMode.getWinner();
+
+        multiPlayerMode2.checkWinner();
+        String actual3 = multiPlayerMode2.getWinner();
 
 
         //Then
-        Assertions.assertEquals("Player 1",actual);
-        Assertions.assertEquals("Player 1",actual2);
+        Assertions.assertEquals("Player 1", actual);
+        Assertions.assertEquals("Player 1", actual2);
+        Assertions.assertEquals("Player 1", actual3);
     }
+
     @Test
-    @DisplayName("TestCaseXDiagonally")
+    @DisplayName("TestCaseWinXDiagonally")
         //"if the characters are diagonally next to each other, player with mark 'X' should win"
 
-    void testCaseXDiagonally() throws PositionAlreadyTakenException {
+    void testCaseXWinDiagonally() throws PositionAlreadyTakenException {
         //Given
 
-        // true==player O
-        // false==player X
-        boolean player;
-        int rows;
-        int columns;
-        char[][] XOArray;
-        int minValueInArray;
-        int maxValueInArray;
-        boolean computerAsPlayer2;
-        boolean flag = true;
-        boolean shutApp = false;
-        int count = 0;
-        String winner;
-
-
         SinglePlayerMode singlePlayerMode = new SinglePlayerMode(3, 3);
-        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3,3);
-//        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10,10);
+        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3, 3);
+        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10,10);
+        MultiPlayerMode multiPlayerMode3 = new MultiPlayerMode(10,10);
 
         //When
 
-        //Player 'X' chose position 1,5,9.
-        singlePlayerMode.setCoordinates(1); //Player X
-        singlePlayerMode.setCoordinates(2); //Player 0
-        singlePlayerMode.setCoordinates(5); //Player X
-        singlePlayerMode.setCoordinates(7); //Player 0
-        singlePlayerMode.setCoordinates(9); //Player X
-        singlePlayerMode.setCoordinates(8); //Player 0
+        //Player 'X' chose position 0.0, 1.1, 2.2
+        singlePlayerMode.setCoordinates(0, 0); //Player X
+        singlePlayerMode.setCoordinates(0, 1); //Player 0
+        singlePlayerMode.setCoordinates(1, 1); //Player X
+        singlePlayerMode.setCoordinates(2, 0); //Player 0
+        singlePlayerMode.setCoordinates(2, 2); //Player X
+        singlePlayerMode.setCoordinates(2, 1); //Player 0
 
-        //Player 'X' chose position 3,5,7.
-        multiPlayerMode.setCoordinates(3); //Player X
-        multiPlayerMode.setCoordinates(1); //Player 0
-        multiPlayerMode.setCoordinates(5); //Player X
-        multiPlayerMode.setCoordinates(2); //Player 0
-        multiPlayerMode.setCoordinates(7); //Player X
-        multiPlayerMode.setCoordinates(8); //Player 0
+        //Player 'X' chose position 0.2, 1.1, 2.0
+        multiPlayerMode.setCoordinates(0, 2); //Player X
+        multiPlayerMode.setCoordinates(0, 0); //Player 0
+        multiPlayerMode.setCoordinates(1, 1); //Player X
+        multiPlayerMode.setCoordinates(0, 1); //Player 0
+        multiPlayerMode.setCoordinates(2, 0); //Player X
+        multiPlayerMode.setCoordinates(2, 1); //Player 0
+
+        //Player 'X' chose position 0.8, 1.7, 2.6, 3.5, 4.4
+        multiPlayerMode2.setCoordinates(0,8);
+        multiPlayerMode2.setCoordinates(0,0);
+        multiPlayerMode2.setCoordinates(1,7);
+        multiPlayerMode2.setCoordinates(0,1);
+        multiPlayerMode2.setCoordinates(2,6);
+        multiPlayerMode2.setCoordinates(0,2);
+        multiPlayerMode2.setCoordinates(3,5);
+        multiPlayerMode2.setCoordinates(0,3);
+        multiPlayerMode2.setCoordinates(4,4);
+        multiPlayerMode2.setCoordinates(2,9);
+
+        //Player 'X' chose position 0.9, 1.8, 2.7, 3.6, 4.5
+        multiPlayerMode3.setCoordinates(0,9);
+        multiPlayerMode3.setCoordinates(0,0);
+        multiPlayerMode3.setCoordinates(1,8);
+        multiPlayerMode3.setCoordinates(0,1);
+        multiPlayerMode3.setCoordinates(2,7);
+        multiPlayerMode3.setCoordinates(0,2);
+        multiPlayerMode3.setCoordinates(3,6);
+        multiPlayerMode3.setCoordinates(0,3);
+        multiPlayerMode3.setCoordinates(4,5);
+        multiPlayerMode3.setCoordinates(0,8);
+
 
         singlePlayerMode.checkWinner();
-        String actual=singlePlayerMode.getWinner();
+        String actual = singlePlayerMode.getWinner();
 
         multiPlayerMode.checkWinner();
-        String actual2=multiPlayerMode.getWinner();
+        String actual2 = multiPlayerMode.getWinner();
 
+        multiPlayerMode2.checkWinner();
+        String actual3 = multiPlayerMode2.getWinner();
+
+        multiPlayerMode3.checkWinner();
+        String actual4 = multiPlayerMode3.getWinner();
 
         //Then
-        Assertions.assertEquals("Player 1",actual);
-        Assertions.assertEquals("Player 1",actual2);
+        Assertions.assertEquals("Player 1", actual);
+        Assertions.assertEquals("Player 1", actual2);
+        Assertions.assertEquals("Player 1", actual3);
+        Assertions.assertEquals("Player 1", actual4);
     }
 
     @Test
     @DisplayName("TestCaseDrawScenario")
-
     void TestCaseDrawScenario() throws PositionAlreadyTakenException {
         //Given
 
-        // true==player O
-        // false==player X
-        boolean player;
-        int rows;
-        int columns;
-        char[][] XOArray;
-        int minValueInArray;
-        int maxValueInArray;
-        boolean computerAsPlayer2;
-        boolean flag = true;
-        boolean shutApp = false;
-        int count = 0;
-
         SinglePlayerMode singlePlayerMode = new SinglePlayerMode(3, 3);
-        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3,3);
-//        MultiPlayerMode multiPlayerMode2 = new MultiPlayerMode(10,10);
+        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3, 3);
 
         //When
 
-        //Player 'X' chose position 1,3,4,6,8.
-        singlePlayerMode.setCoordinates(1); //Player X
-        singlePlayerMode.setCoordinates(2); //Player 0
-        singlePlayerMode.setCoordinates(3); //Player X
-        singlePlayerMode.setCoordinates(5); //Player 0
-        singlePlayerMode.setCoordinates(4); //Player X
-        singlePlayerMode.setCoordinates(7); //Player 0
-        singlePlayerMode.setCoordinates(6); //Player X
-        singlePlayerMode.setCoordinates(9); //Player 0
-        singlePlayerMode.setCoordinates(8); //Player X
+        //Player 'X' chose position 0.0, 0.2, 1.0, 1.2, 2.1
+        singlePlayerMode.setCoordinates(0, 0); //Player X
+        singlePlayerMode.setCoordinates(0, 1); //Player 0
+        singlePlayerMode.setCoordinates(0, 2); //Player X
+        singlePlayerMode.setCoordinates(1, 1); //Player 0
+        singlePlayerMode.setCoordinates(1, 0); //Player X
+        singlePlayerMode.setCoordinates(2, 0); //Player 0
+        singlePlayerMode.setCoordinates(1, 2); //Player X
+        singlePlayerMode.setCoordinates(2, 2); //Player 0
+        singlePlayerMode.setCoordinates(2, 1); //Player X
 
-        //Player 'X' chose position 2,3,4,5,9.
-        multiPlayerMode.setCoordinates(2); //Player X
-        multiPlayerMode.setCoordinates(1); //Player 0
-        multiPlayerMode.setCoordinates(3); //Player X
-        multiPlayerMode.setCoordinates(6); //Player 0
-        multiPlayerMode.setCoordinates(4); //Player X
-        multiPlayerMode.setCoordinates(7); //Player 0
-        multiPlayerMode.setCoordinates(5); //Player X
-        multiPlayerMode.setCoordinates(8); //Player 0
-        multiPlayerMode.setCoordinates(9); //Player X
+        //Player 'X' chose position 0.1, 0.2, 1.0, 1.1, 2.2
+        multiPlayerMode.setCoordinates(0, 1); //Player X
+        multiPlayerMode.setCoordinates(0, 0); //Player 0
+        multiPlayerMode.setCoordinates(0, 2); //Player X
+        multiPlayerMode.setCoordinates(1, 2); //Player 0
+        multiPlayerMode.setCoordinates(1, 0); //Player X
+        multiPlayerMode.setCoordinates(2, 0); //Player 0
+        multiPlayerMode.setCoordinates(1, 1); //Player X
+        multiPlayerMode.setCoordinates(2, 1); //Player 0
+        multiPlayerMode.setCoordinates(2, 2); //Player X
 
         singlePlayerMode.checkWinner();
-        String actual=singlePlayerMode.getWinner();
+        String actual = singlePlayerMode.getWinner();
 
         multiPlayerMode.checkWinner();
-        String actual2=multiPlayerMode.getWinner();
+        String actual2 = multiPlayerMode.getWinner();
 
 
         //Then
-        Assertions.assertEquals("Draw",actual);
-        Assertions.assertEquals("Draw",actual2);
+        Assertions.assertEquals("Draw", actual);
+        Assertions.assertEquals("Draw", actual2);
     }
 
     @Test
@@ -430,31 +454,16 @@ public class TicTacToeTestSuite {
     void TestCaseExceptionThrown() throws PositionAlreadyTakenException {
         //Given
 
-        // true==player O
-        // false==player X
-        boolean player;
-        int rows;
-        int columns;
-        char[][] XOArray;
-        int minValueInArray;
-        int maxValueInArray;
-        boolean computerAsPlayer2;
-        boolean flag = true;
-        boolean shutApp = false;
-        int count = 0;
-
         SinglePlayerMode singlePlayerMode = new SinglePlayerMode(3, 3);
-        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3,3);
+        MultiPlayerMode multiPlayerMode = new MultiPlayerMode(3, 3);
 
         //When
 
-        //Players chose position 1
-        singlePlayerMode.setCoordinates(1);
-        Executable executable= ()->singlePlayerMode.setCoordinates(1);
+        singlePlayerMode.setCoordinates(1, 1);
+        Executable executable = () -> singlePlayerMode.setCoordinates(1, 1);
 
-        //Players chose position 5
-        singlePlayerMode.setCoordinates(5);
-        Executable executable2= ()->singlePlayerMode.setCoordinates(5);
+        singlePlayerMode.setCoordinates(2, 2);
+        Executable executable2 = () -> singlePlayerMode.setCoordinates(2, 2);
 
         //Then
         Assertions.assertThrows(PositionAlreadyTakenException.class, executable);

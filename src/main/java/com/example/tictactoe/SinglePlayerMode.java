@@ -4,12 +4,7 @@ import java.util.Random;
 
 public class SinglePlayerMode extends PlayerMode {
 
-
-
     Random random = new Random();
-
-    public SinglePlayerMode() {
-    }
 
     public SinglePlayerMode(int rows, int columns) {
         super();
@@ -18,22 +13,35 @@ public class SinglePlayerMode extends PlayerMode {
         checkPattern();
         computerAsPlayer2=true;
         XOArray = new char[rows][columns];
+        setArray();
     }
-
-
 
     @Override
     public void chooseCoordinates() {
         while (true) {
-            int number;
+            int row;
+            int col;
 
             if (!player) {
-                System.out.println("\n"+getPlayer()+" : please choose a number");
+                System.out.println("\n"+getPlayer()+" : please choose a row");
                 try {
-                    number = scanner.nextInt();
+                    row = scanner.nextInt();
 
-                    if ((number < minValueInArray) || (number > maxValueInArray)) {
-                        System.out.println("choose value from " + minValueInArray + " to " + maxValueInArray + "\n");
+                    if ((row < 0) || (row > rows)) {
+                        System.out.println("choose value from " + 0 + " to " + rows + "\n");
+                        continue;
+                    }
+                } catch (Exception e) {
+                    System.err.println("choose correct Integer value" + "\n");
+                    scanner.next();
+                    continue;
+                }
+                System.out.println("\n"+getPlayer()+" : please choose a column");
+                try {
+                    col = scanner.nextInt();
+
+                    if ((col < 0) || (col > columns)) {
+                        System.out.println("choose value from " + 0 + " to " + columns + "\n");
                         continue;
                     }
                 } catch (Exception e) {
@@ -42,15 +50,17 @@ public class SinglePlayerMode extends PlayerMode {
                     continue;
                 }
                 try {
-                    setCoordinates(number);
+                    setCoordinates(row,col);
                     break;
                 } catch (PositionAlreadyTakenException e) {
                     System.err.println("Position already taken! Try another one" + "\n");
                 }
+
             }else{
-                number=random.nextInt(maxValueInArray-minValueInArray+1)+minValueInArray;
+                row=random.nextInt(rows);
+                col=random.nextInt(columns);
                 try {
-                    setCoordinates(number);
+                    setCoordinates(row,col);
                     break;
                 } catch (PositionAlreadyTakenException e) {
                     dontPrint=true;

@@ -1,6 +1,6 @@
 package com.example.tictactoe;
 
-import java.util.Arrays;
+
 import java.util.Scanner;
 
 public class GameConfigurator {
@@ -65,25 +65,26 @@ public class GameConfigurator {
     }
 
     public void showRules() {
-        System.out.println("RULES:"+"\n");
-        System.out.println("select the appropriate number to place a mark there" + "\n");
-        int count = 0;
+        System.out.println("RULES:" + "\n");
+        System.out.println("select the appropriate row & column number to place a mark there" + "\n");
 
-        //initialize 2D Array
+        System.out.print("   ");
         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                count++;
-                arrayToPresentRules[i][j] = count;
+            if (i == rows - 1) {
+                System.out.print(i);
+            } else {
+                System.out.print(i + " | ");
             }
         }
-
-       // show 2D Array
-        for (int i = 0; i < rows; i++) {
+        System.out.println();
+        for (int i = 0; i < columns; i++) {
+            System.out.print(i + " |");
             for (int j = 0; j < columns; j++) {
                 if (j == columns - 1) {
-                    System.out.print(" | " + arrayToPresentRules[i][j] + " | ");
-                } else
-                    System.out.print(" | " + arrayToPresentRules[i][j]);
+                    continue;
+                } else {
+                    System.out.printf("  | ");
+                }
             }
             System.out.println();
         }
