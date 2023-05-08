@@ -24,7 +24,6 @@ public abstract class PlayerMode {
     private int count = 0;
     private String winner;
 
-
     View view = new View();
 
     public void play() {
@@ -99,7 +98,6 @@ public abstract class PlayerMode {
         count++;
     }
 
-
     public boolean checkWinner() {
         String paternX;
         String patern0;
@@ -172,13 +170,11 @@ public abstract class PlayerMode {
                                 (XOArray[i + 2][j + 2] == 'X') &&
                                 (XOArray[i - 1][j - 1] == 'X') &&
                                 (XOArray[i - 2][j - 2] == 'X')
-
-                        )||
+                        ) ||
                                 (XOArray[i + 1][j - 1] == 'X') &&
                                         (XOArray[i - 2][j + 2] == 'X') &&
                                         (XOArray[i + 1][j - 1] == 'X') &&
                                         (XOArray[i + 2][j - 2] == 'X')
-
                         ) {
                             this.winner = "Player 1";
                             return true;
@@ -188,15 +184,13 @@ public abstract class PlayerMode {
                         if (((XOArray[i + 1][j + 1] == 'O') &&
                                 (XOArray[i + 2][j + 2] == 'O') &&
                                 (XOArray[i - 1][j - 1] == 'O') &&
-                                (XOArray[i - 2][j - 2] == 'O'))
-                                ||
+                                (XOArray[i - 2][j - 2] == 'O')) ||
                                 ((XOArray[i + 1][j - 1] == 'O') &&
                                         (XOArray[i - 2][j + 2] == 'O') &&
                                         (XOArray[i + 1][j - 1] == 'O') &&
                                         (XOArray[i + 2][j - 2] == 'O'))
 
-                        )
-                         {
+                        ) {
                             this.winner = "Player 2";
                             return true;
                         }
@@ -208,75 +202,8 @@ public abstract class PlayerMode {
             System.out.println("Exception");
         }
 
-//        for (int i = 0; i < columns; ++i) {
-//            for (int j = 0; j < columns; ++j) {
-//                if (i >= 2 && j >= 2 && i <= 7 && j <= 7 && XOArray[i][j] == 'X') {
-//                    if ((XOArray[i + 1][j + 1] == 'X') &&
-//                            (XOArray[i + 2][j + 2] == 'X') &&
-//                            (XOArray[i - 1][j - 1] == 'X') &&
-//                            (XOArray[i - 2][j - 2] == 'X')
-//
-//                    ) {
-//                        this.winner = "Player 1";
-//                        return true;
-//                    }
-//
-//                } else if (i >= 2 && j >= 2 && i <= 7 && j <= 7 && XOArray[i][j] == 'O') {
-//                    if ((XOArray[i + 1][j + 1] == 'O') &&
-//                            (XOArray[i + 2][j + 2] == 'O') &&
-//                            (XOArray[i - 1][j - 1] == 'O') &&
-//                            (XOArray[i - 2][j - 2] == 'O')
-//                    ) {
-//                        this.winner = "Player 2";
-//                        return true;
-//                    }
-//
-//                }
-//            }
-//        }
         return false;
-//        if (horizontal.contains(paternX)) {
-//            this.winner = "Player 1";
-//            return true;
-//
-//        } else if (horizontal.contains(patern0)) {
-//            this.winner = "Player 2";
-//            return true;
-//        } else {
-//            return false;
-//        }
-
-
     }
-//            public boolean checkWinner () {
-//                if (count == maxValueInArray) {
-//                    this.winner = "Draw";
-//                    return true;
-//                } else if ((XOArray[0][0] == 'O' && XOArray[0][1] == 'O' && XOArray[0][2] == 'O') ||
-//                        (XOArray[1][0] == 'O' && XOArray[1][1] == 'O' && XOArray[1][2] == 'O') ||
-//                        (XOArray[2][0] == 'O' && XOArray[2][1] == 'O' && XOArray[2][2] == 'O') ||
-//                        (XOArray[0][0] == 'O' && XOArray[1][0] == 'O' && XOArray[2][0] == 'O') ||
-//                        (XOArray[0][1] == 'O' && XOArray[1][1] == 'O' && XOArray[2][1] == 'O') ||
-//                        (XOArray[0][2] == 'O' && XOArray[1][2] == 'O' && XOArray[2][2] == 'O') ||
-//                        (XOArray[0][0] == 'O' && XOArray[1][1] == 'O' && XOArray[2][2] == 'O') ||
-//                        (XOArray[2][0] == 'O' && XOArray[1][1] == 'O' && XOArray[0][2] == 'O')) {
-//                    this.winner = "Player 2";
-//                    return true;
-//                } else if ((XOArray[0][0] == 'X' && XOArray[0][1] == 'X' && XOArray[0][2] == 'X') ||
-//                        (XOArray[1][0] == 'X' && XOArray[1][1] == 'X' && XOArray[1][2] == 'X') ||
-//                        (XOArray[2][0] == 'X' && XOArray[2][1] == 'X' && XOArray[2][2] == 'X') ||
-//                        (XOArray[0][0] == 'X' && XOArray[1][0] == 'X' && XOArray[2][0] == 'X') ||
-//                        (XOArray[0][1] == 'X' && XOArray[1][1] == 'X' && XOArray[2][1] == 'X') ||
-//                        (XOArray[0][2] == 'X' && XOArray[1][2] == 'X' && XOArray[2][2] == 'X') ||
-//                        (XOArray[0][0] == 'X' && XOArray[1][1] == 'X' && XOArray[2][2] == 'X') ||
-//                        (XOArray[2][0] == 'X' && XOArray[1][1] == 'X' && XOArray[0][2] == 'X')
-//                ) {
-//                    winner = "Player 1";
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//            }
 
     public void setArray() {
         for (int i = 0; i < rows; i++) {
