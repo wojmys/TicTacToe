@@ -113,97 +113,97 @@ public abstract class PlayerMode {
             paternX = "XXXXX";
             patern0 = "OOOOO";
         }
-        if (((columns == 3) && (XOArray[0][0] == 'X' &&
-                XOArray[1][1] == 'X' &&
-                XOArray[2][2] == 'X')) ||
-                ((columns == 3) && (XOArray[1][1] == 'X' &&
-                        XOArray[0][2] == 'X' &&
-                        XOArray[2][0] == 'X'))
-        ) {
-            this.winner = "Player 1";
-            return true;
-        } else if (((columns == 3) && (XOArray[0][0] == 'O' &&
-                XOArray[1][1] == 'O' &&
-                XOArray[2][2] == 'O')) ||
-                ((columns == 3) && (XOArray[1][1] == 'O' &&
-                        XOArray[0][2] == 'O' &&
-                        XOArray[2][0] == 'O'))
-        ) {
-            this.winner = "Player 2";
-            return true;
-        }
 
-        for (int i = 0; i < columns; i++) {
-            String vertical = new String();
-            for (int j = 0; j < columns; j++) {
-                vertical += XOArray[j][i];
-            }
-            if (vertical.contains(paternX)) {
+            if (((columns == 3) && (XOArray[0][0] == 'X' &&
+                    XOArray[1][1] == 'X' &&
+                    XOArray[2][2] == 'X')) ||
+                    ((columns == 3) && (XOArray[1][1] == 'X' &&
+                            XOArray[0][2] == 'X' &&
+                            XOArray[2][0] == 'X'))
+            ) {
                 this.winner = "Player 1";
                 return true;
-
-            } else if (vertical.contains(patern0)) {
+            } else if (((columns == 3) && (XOArray[0][0] == 'O' &&
+                    XOArray[1][1] == 'O' &&
+                    XOArray[2][2] == 'O')) ||
+                    ((columns == 3) && (XOArray[1][1] == 'O' &&
+                            XOArray[0][2] == 'O' &&
+                            XOArray[2][0] == 'O'))
+            ) {
                 this.winner = "Player 2";
                 return true;
             }
-        }
-        for (int i = 0; i < columns; i++) {
-            String horizontal = new String();
-            for (int j = 0; j < columns; j++) {
-                horizontal += XOArray[i][j];
-            }
-            if (horizontal.contains(paternX)) {
-                this.winner = "Player 1";
-                return true;
 
-            } else if (horizontal.contains(patern0)) {
-                this.winner = "Player 2";
-                return true;
-            }
-        }
+            for (int i = 0; i < columns; i++) {
+                String vertical = new String();
+                for (int j = 0; j < columns; j++) {
+                    vertical += XOArray[j][i];
+                }
+                if (vertical.contains(paternX)) {
+                    this.winner = "Player 1";
+                    return true;
 
-        try {
-            for (int i = 2; i < 8; ++i) {
-                for (int j = 2; j < 8; ++j) {
-                    if (XOArray[i][j] == 'X') {
-                        if (((XOArray[i + 1][j + 1] == 'X') &&
-                                (XOArray[i + 2][j + 2] == 'X') &&
-                                (XOArray[i - 1][j - 1] == 'X') &&
-                                (XOArray[i - 2][j - 2] == 'X')
-                        ) ||
-                                (XOArray[i + 1][j - 1] == 'X') &&
-                                        (XOArray[i - 2][j + 2] == 'X') &&
-                                        (XOArray[i + 1][j - 1] == 'X') &&
-                                        (XOArray[i + 2][j - 2] == 'X')
-                        ) {
-                            this.winner = "Player 1";
-                            return true;
-                        }
-
-                    } else if (XOArray[i][j] == 'O') {
-                        if (((XOArray[i + 1][j + 1] == 'O') &&
-                                (XOArray[i + 2][j + 2] == 'O') &&
-                                (XOArray[i - 1][j - 1] == 'O') &&
-                                (XOArray[i - 2][j - 2] == 'O')) ||
-                                ((XOArray[i + 1][j - 1] == 'O') &&
-                                        (XOArray[i - 2][j + 2] == 'O') &&
-                                        (XOArray[i + 1][j - 1] == 'O') &&
-                                        (XOArray[i + 2][j - 2] == 'O'))
-
-                        ) {
-                            this.winner = "Player 2";
-                            return true;
-                        }
-
-                    }
+                } else if (vertical.contains(patern0)) {
+                    this.winner = "Player 2";
+                    return true;
                 }
             }
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Exception");
-        }
+            for (int i = 0; i < columns; i++) {
+                String horizontal = new String();
+                for (int j = 0; j < columns; j++) {
+                    horizontal += XOArray[i][j];
+                }
+                if (horizontal.contains(paternX)) {
+                    this.winner = "Player 1";
+                    return true;
 
-        return false;
-    }
+                } else if (horizontal.contains(patern0)) {
+                    this.winner = "Player 2";
+                    return true;
+                }
+            }
+if(columns==10) {
+//    try {
+        for (int i = 2; i < 8; ++i) {
+            for (int j = 2; j < 8; ++j) {
+                if (XOArray[i][j] == 'X') {
+                    if (((XOArray[i + 1][j + 1] == 'X') &&
+                            (XOArray[i + 2][j + 2] == 'X') &&
+                            (XOArray[i - 1][j - 1] == 'X') &&
+                            (XOArray[i - 2][j - 2] == 'X')
+                    ) ||
+                            (XOArray[i + 1][j - 1] == 'X') &&
+                                    (XOArray[i - 2][j + 2] == 'X') &&
+                                    (XOArray[i + 1][j - 1] == 'X') &&
+                                    (XOArray[i + 2][j - 2] == 'X')
+                    ) {
+                        this.winner = "Player 1";
+                        return true;
+                    }
+
+                } else if (XOArray[i][j] == 'O') {
+                    if (((XOArray[i + 1][j + 1] == 'O') &&
+                            (XOArray[i + 2][j + 2] == 'O') &&
+                            (XOArray[i - 1][j - 1] == 'O') &&
+                            (XOArray[i - 2][j - 2] == 'O')) ||
+                            ((XOArray[i + 1][j - 1] == 'O') &&
+                                    (XOArray[i - 2][j + 2] == 'O') &&
+                                    (XOArray[i + 1][j - 1] == 'O') &&
+                                    (XOArray[i + 2][j - 2] == 'O'))
+
+                    ) {
+                        this.winner = "Player 2";
+                        return true;
+                    }
+
+                }
+            }
+        }
+//    } catch (IndexOutOfBoundsException e) {
+//    }
+}
+            return false;
+        }
 
     public void setArray() {
         for (int i = 0; i < rows; i++) {
