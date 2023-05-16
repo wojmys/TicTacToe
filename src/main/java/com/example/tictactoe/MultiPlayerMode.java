@@ -50,7 +50,6 @@ public class MultiPlayerMode extends PlayerMode {
             } catch (PositionAlreadyTakenException e) {
                 System.err.println("Position already taken! Try another one" + "\n");
             }
-
         }
     }
 }

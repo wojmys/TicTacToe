@@ -2,7 +2,6 @@ package com.example.tictactoe;
 
 public class View {
 
-
     public void presentWinner(String playerWinner) {
         if (playerWinner.equals("draw")) {
             System.out.println("Draw !" + "\n");
@@ -22,7 +21,6 @@ public class View {
             }
             System.out.println();
         }
-
     }
 }
 

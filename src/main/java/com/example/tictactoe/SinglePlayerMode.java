@@ -55,7 +55,6 @@ public class SinglePlayerMode extends PlayerMode {
                 } catch (PositionAlreadyTakenException e) {
                     System.err.println("Position already taken! Try another one" + "\n");
                 }
-
             }else{
                 row=random.nextInt(rows);
                 col=random.nextInt(columns);
@@ -69,6 +68,5 @@ public class SinglePlayerMode extends PlayerMode {
             }
         }
         }
-
     }
 
